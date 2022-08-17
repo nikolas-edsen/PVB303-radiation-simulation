@@ -92,7 +92,7 @@ m = decay_model.Coefficients{2,1};
 m_e = decay_model.Coefficients{2,2};
 
 decay_formula = @(t) c + m * t;
-decay_str = sprintf('Formula: log(C) = %.4f t + %.4f', m, c)
+decay_str = sprintf('Formula: $\\log(C) = %.4f t + %.4f$', m, c);
 
 % In log-linear coordinates with linear regression
 subplot(1,2,2)
@@ -106,7 +106,7 @@ legend('Data', 'Linear Model')
 
 text_x = get(gca, 'xlim') - 1230;
 text_y = get(gca, 'ylim') - 1.5;
-text(text_x(2),text_y(2),decay_str)
+text(text_x(2),text_y(2),decay_str, 'Interpreter','latex')
 
 
 
@@ -171,7 +171,7 @@ m = buildup_model.Coefficients{2,1};
 m_e = buildup_model.Coefficients{2,2};
 
 buildup_formula = @(t) c + m * t;
-buildup_str = sprintf('Formula: !!log(C) = %.4f t + %.4f', m, c)
+buildup_str = sprintf('Formula: $\\log\\left(\\frac{C_E - C}{C_E - C_0}\\right) = %.4f t + %.4f$', m, c);
 
 
 
@@ -182,12 +182,12 @@ hold on
 plot(t_lm, buildup_formula(t_lm), 'r-', 'LineWidth',1)
 title('137mBa Buildup (Logarithmic)')
 xlabel('Time (s)')
-ylabel('log(Counts)')
+ylabel('$\log\left(\frac{C_E - C}{C_E - C_0}\right)$', 'Interpreter', 'latex')
 legend('Data', 'Linear Model')
 
-text_x = get(gca, 'xlim') - 1230;
+text_x = get(gca, 'xlim') - 1430;
 text_y = get(gca, 'ylim') - 2.5;
-text(text_x(2),text_y(2),buildup_str)
+text(text_x(2),text_y(2),buildup_str, 'Interpreter', 'latex')
 
 
 
