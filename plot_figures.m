@@ -10,19 +10,20 @@ set(gcf, "Position", [100,100,1100,400])
 subplot(1,2,1)
 plot(times1, detector1, '.')
 ylim([0,15])
-title('Counts Over Time Due to Detector Noise')
+title('a) Counts Over Time Due to Detector Noise')
 xlabel('Time (s)')
 ylabel('Counts')
 
 subplot(1,2,2)
 histogram(detector1)
-title('Distribution of Count Numbers Due to Detector Noise')
+title('b) Distribution of Count Numbers Due to Detector Noise')
 xlabel('Counts')
 ylabel('Frequency')
 
 text_x = get(gca, 'xlim') - 3;
 text_y = get(gca, 'ylim') - 30;
 text(text_x(2), text_y(2),"\sigma = " + std(detector1))
+text(text_x(2), text_y(2) - 20,"\mu = " + mean(detector1))
 
 
 
@@ -35,17 +36,18 @@ subplot(1,2,1)
 plot(times2, detector2, '.')
 xlabel('Time (s)')
 ylabel('Counts')
-title('Counts Over Time at Secular Equilibrium')
+title('a) Counts Over Time at Secular Equilibrium')
 
 subplot(1,2,2)
 histogram(detector2)
-title('Distribution of Count Numbers at Secular Equilibrium')
+title('b) Distribution of Count Numbers at Secular Equilibrium')
 xlabel('Counts')
 ylabel('Frequency')
 
 text_x = get(gca, 'xlim') - 150;
 text_y = get(gca, 'ylim') - 15;
 text(text_x(2), text_y(2),"\sigma = " + std(detector2))
+text(text_x(2), text_y(2) - 15,"\mu = " + mean(detector2))
 
 
 
@@ -68,7 +70,7 @@ subplot(1,2,1)
 plot(times3, detector3, 'b.')
 xlabel('Time (s)')
 ylabel('Counts')
-title('137mBa Decay')
+title('a) 137mBa Decay')
 
 % Find where the decay is below 2x the noise_level
 noise_level = 9;
@@ -99,7 +101,7 @@ subplot(1,2,2)
 plot(times3, logdet3, 'b.')
 hold on
 plot(t_lm, decay_formula(t_lm), 'r-', 'LineWidth',1)
-title('137mBa Decay (Logarithmic)')
+title('b) 137mBa Decay (Logarithmic)')
 xlabel('Time (s)')
 ylabel('log(Counts)')
 legend('Data', 'Linear Model')
@@ -128,7 +130,7 @@ subplot(1,2,1)
 plot(times4, detector4, 'b.')
 xlabel('Time (s)')
 ylabel('Counts')
-title('137mBa Buildup')
+title('a) 137mBa Buildup')
 
 
 
@@ -180,7 +182,7 @@ subplot(1,2,2)
 plot(times4, logC, 'b.');
 hold on
 plot(t_lm, buildup_formula(t_lm), 'r-', 'LineWidth',1)
-title('137mBa Buildup (Logarithmic)')
+title('b) 137mBa Buildup (Logarithmic)')
 xlabel('Time (s)')
 ylabel('$\log\left(\frac{C_E - C}{C_E - C_0}\right)$', 'Interpreter', 'latex')
 legend('Data', 'Linear Model')
